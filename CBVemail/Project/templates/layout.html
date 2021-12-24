@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+  {% block title %}
+    <title> Give Title</title>
+  {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'styleone2.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <ul class="mynavbar">
+        <li><a href="{% url 'add_lap' %}">ADD LAPTOP</a></li>
+        <li><a href="{% url 'show_lap' %}">SHOW LAPTOPS</a></li>
+        <span class="authlinks">
+            {% if user.is_authenticated %}
+            <li><a>Hellow , {{user.username}}</a></li>
+            <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+
+            {% else %}
+            <li><a href="{% url 'register' %}">REGISTER</a></li>
+            <li><a href="{% url 'login' %}">LOGIN</a></li>
+            {% endif %}
+        </span>
+
+
+    </ul>
+<br>
+  {% block content %}
+     main content
+    <footer>Since 1999</footer>
+  {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script></body>
+</html>

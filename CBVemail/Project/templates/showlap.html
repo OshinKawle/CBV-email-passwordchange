@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+<body>
+{% block content%}
+<h3 style="text-align:center">SHOW LAPTOPS</h3>
+<table border="1px" class="center" style="text-align:center">
+    <tr style="background-color:silver">
+        <th>COMPANY</th>
+        <th>MODEL_NAME</th>
+        <th>RAM</th>
+        <th>ROM</th>
+        <th>PROCESSOR</th>
+        <th>PRICE</th>
+        <th>WEIGHT</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+       
+    </tr>
+    {% for lap in laptop %}
+    <tr style="background-color:aquamarine">
+        <td>{{lap.company}}</td>
+        <td>{{lap.model_name}}</td>
+        <td>{{lap.ram}}</td>
+        <td>{{lap.rom}}</td>
+        <td>{{lap.processor}}</td>
+        <td>{{lap.price}}</td>
+        <td>{{lap.weight}}</td>
+        <td><a href="{% url 'delete_lap' lap.id %}" >
+            <button class="btn btn-danger">DELETE</button>
+        </a>
+        </td>
+        <td><a href="{% url 'update_lap' lap.id %}" >
+            <button class="btn btn-success">UPDATE</button>
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+<div style="text-align:center;color:yellow">
+<a href="{% url 'add_lap' %}"><button>ADD MORE LAPTOP</button></a></div>
+{% endblock %}
+
+</body>

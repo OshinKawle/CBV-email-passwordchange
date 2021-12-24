@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container" style="width:40%">
+        <h2 style="text-align:center">Login page</h2><br>
+        <form method="post" class="jumbotron">
+            {% csrf_token %}
+            <label for="un">ENTER USERNAME</label>
+            <input type="text" id="un" name="un" class="form-control"><i class="fas fa-sign-in-alt"></i>
+            <br>
+            <label for="pw">ENTER PASSWORD</label>
+            <input type="password" id="pw" name="pw" class="form-control">
+            <br>
+            {% for msg in messages %}
+            <p style="color:red">{{msg}}</p>
+            {% endfor %}
+            <input type="submit" value="Login" class="btn btn-success">
+
+
+
+        </form>
+         <div style="text-align:center;color:red">
+            <a href="{% url 'reset_password' %}"><button>Forget Password</button></a></div>
+    </div>
+{% endblock %}
